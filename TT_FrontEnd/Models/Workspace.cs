@@ -9,5 +9,7 @@ namespace TT_FrontEnd.Models
     {
         public int WorkspaceID { get; set; }
         public string WorkspaceName { get; set; }
+
+        public virtual ICollection<Loan> Loans { get; set; }
     }
 }

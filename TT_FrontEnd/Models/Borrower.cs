@@ -10,5 +10,6 @@ namespace TT_FrontEnd.Models
         public int BorrowerID { get; set; }
         public string BorrowerName { get; set; }
 
+        public virtual ICollection<Loan> Loans { get; set; }
     }
 }

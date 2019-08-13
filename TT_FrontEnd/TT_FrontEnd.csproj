@@ -138,6 +138,7 @@
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Test_EmptyController.cs" />
+    <Compile Include="Controllers\ToolController.cs" />
     <Compile Include="Controllers\WorkspaceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -150,6 +151,8 @@
     <Compile Include="Models\TT_FrontEndContext.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ToolEditViewModel.cs" />
+    <Compile Include="ViewModels\TooListlViewModel.cs" />
     <Compile Include="WebClient.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +203,11 @@
     <Content Include="Views\Brand\Delete.cshtml" />
     <Content Include="Views\Borrower\Delete.cshtml" />
     <Content Include="Views\Workspace\Delete.cshtml" />
+    <Content Include="Views\Tool\Index.cshtml" />
+    <Content Include="Views\Tool\Delete.cshtml" />
+    <Content Include="Views\Tool\Details.cshtml" />
+    <Content Include="Views\Tool\Edit.cshtml" />
+    <Content Include="Views\Tool\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

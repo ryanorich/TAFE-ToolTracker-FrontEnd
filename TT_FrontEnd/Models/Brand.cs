@@ -11,5 +11,7 @@ namespace TT_FrontEnd.Models
         public int BrandID { get; set; }
         public string BrandName { get; set; }
 
+        public virtual ICollection<Tool> Tools { get; set; }
+
     }
 }

@@ -15,5 +15,9 @@ namespace TT_FrontEnd.Models
         public virtual Borrower Borrower { get; set; }
         public virtual Workspace Workspace { get; set; }
 
+
+
+        public virtual ICollection<LoanTool> LoanTools { get; set; }
+
     }
 }
