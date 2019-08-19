@@ -13,8 +13,8 @@ namespace TT_FrontEnd.Models
         public bool Decomissioned { get; set; }
         public string picFileName { get; set; }
         public int BrandID { get; set; }
-        //public virtual Brand Brand { get; set; }
-       // public virtual ICollection<LoanTool> LoanTools { get; set; }
+        public virtual Brand Brand { get; set; }
+        public virtual ICollection<LoanTool> LoanTools { get; set; }
 
         //For Selection List
         public IEnumerable<SelectListItem> Brands { get; set; }

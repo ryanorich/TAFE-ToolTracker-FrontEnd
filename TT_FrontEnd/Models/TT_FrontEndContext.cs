@@ -28,5 +28,7 @@ namespace TT_FrontEnd.Models
         public System.Data.Entity.DbSet<TT_FrontEnd.Models.Tool> Tools { get; set; }
 
         public System.Data.Entity.DbSet<TT_FrontEnd.ViewModels.TooListlViewModel> TooListlViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<TT_FrontEnd.Models.Loan> Loans { get; set; }
     }
 }

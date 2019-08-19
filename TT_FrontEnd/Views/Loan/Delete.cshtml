@@ -1,0 +1,70 @@
+﻿@model TT_FrontEnd.Models.Loan
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+	<h4>Loan</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Borrower.BorrowerName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Borrower.BorrowerName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Workspace.WorkspaceName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Workspace.WorkspaceName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.DateBorrowed)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.DateBorrowed)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.DateReturned)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.DateReturned)
+		</dd>
+
+	</dl>
+
+	<div>
+		<h4> Tools Loaned</h4>
+		<ul>
+			@foreach (var loantool in Model.LoanTools)
+			{
+				<li>
+					@loantool.Tool.ToolName
+				</li>
+			}
+		</ul>
+	</div>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-actions no-color">
+			<input type="submit" value="Delete" class="btn btn-default" /> |
+			@Html.ActionLink("Back to List", "Index")
+		</div>
+	}
+</div>

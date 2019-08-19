@@ -1,0 +1,64 @@
+﻿@model TT_FrontEnd.Models.Loan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Loan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Borrower.BorrowerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Borrower.BorrowerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Workspace.WorkspaceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Workspace.WorkspaceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateBorrowed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateBorrowed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateReturned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateReturned)
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+	<h4> Tools Loaned</h4>
+	<ul>
+		@foreach (var loantool in Model.LoanTools)
+		{
+			<li>
+				@loantool.Tool.ToolName
+			</li>
+		}
+	</ul>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LoanID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
