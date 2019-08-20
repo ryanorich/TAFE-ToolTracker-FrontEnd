@@ -67,18 +67,27 @@ namespace TT_FrontEnd.Controllers
         // GET: Loan/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            HttpResponseMessage response = WebClient.ApiClient.GetAsync($"Loan/{id}").Result;
+            var loan = response.Content.ReadAsAsync<Loan>().Result;
+
+            loan.Borrowers = GetBorrowers();
+            loan.Workspaces = GetWorkspaces();
+
+            return View(loan);
         }
 
         // POST: Loan/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Loan loan)
         {
             try
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                HttpResponseMessage response = WebClient.ApiClient.PutAsJsonAsync($"Loan/{id}", loan).Result;
+                if (response.IsSuccessStatusCode)
+                    return RedirectToAction("Index");
+                return View(loan);
             }
             catch
             {
@@ -111,6 +120,68 @@ namespace TT_FrontEnd.Controllers
             }
         }
 
+        // Add Loaned Tool - Get
+        public ActionResult AddLoanedTool(int loanID)
+        {
+            var loanTool = new LoanTool();
+            var tools = GetAvailableTools();
+            loanTool.LoanID = loanID;
+            loanTool.AvailableTools = tools;
+
+            return View(loanTool);
+        }
+
+        // Add Loaned Tool - Post
+        [HttpPost]
+        public ActionResult AddLoanedTool(LoanTool loanTool)
+        {
+            try
+            {
+                int id = loanTool.LoanID;
+                HttpResponseMessage response = WebClient.ApiClient
+                                    .PostAsJsonAsync("LoanTool", loanTool).Result;
+
+                return RedirectToAction("Edit", new { id });
+            }
+            catch
+            {
+                // TODO - Update response message
+                return View("No record found...");
+            }
+        }
+
+
+        // Remove Loaned Tool - Get
+        public ActionResult RemoveLoanedTool(int id)
+        {
+            HttpResponseMessage response = WebClient.ApiClient.GetAsync($"LoanTool/{id}").Result;
+            var loanTool = response.Content.ReadAsAsync<LoanTool>().Result;
+
+            return View(loanTool);
+        }
+
+
+
+
+        // Remove Loaned Tool - Post
+        [HttpPost]
+        public ActionResult RemoveLoanedTool(int id, LoanTool loanTool)
+        {
+            try
+            {
+                HttpResponseMessage response = WebClient.ApiClient.DeleteAsync($"LoanTool/{id}").Result;
+
+                var loanToolDeleted = response.Content.ReadAsAsync<LoanTool>().Result;
+
+
+                return RedirectToAction("Edit", new { id = loanToolDeleted.LoanID });
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
         #region Helper Methods
 
@@ -171,7 +242,7 @@ namespace TT_FrontEnd.Controllers
                             .Where(w => {
                                 var loans = w.LoanTools;
                                 int outloans = loans.Where(l => l.Loan.DateReturned == null).Count();
-                                return outloans > 0 ? true: false ;
+                                return outloans > 0 ? false: true ;
                             })
                             .OrderBy(o => o.ToolName)
                             .Select(t => new SelectListItem

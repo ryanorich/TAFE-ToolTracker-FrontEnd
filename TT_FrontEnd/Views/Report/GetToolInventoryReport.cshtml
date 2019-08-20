@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TT_FrontEnd.ViewModels.ToolInventoryViewModel>
+
+@{
+    ViewBag.Title = "GetToolInventoryReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tool Inventory Report</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Decomissioned)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Loaned)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latest)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToolName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Decomissioned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem =>  item.isLoaned )
+			
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latest)
+        </td>
+
+    </tr>
+}
+
+</table>

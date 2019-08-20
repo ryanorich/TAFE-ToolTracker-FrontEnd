@@ -1,0 +1,57 @@
+﻿@model IEnumerable<TT_FrontEnd.ViewModels.LoanedToolsViewModel>
+
+@{
+    ViewBag.Title = "GetLoanedToolsReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Loaned Tools Report</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkspaceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BorrowerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateBorrowed)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToolName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkspaceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BorrowerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateBorrowed)
+        </td>
+
+    </tr>
+}
+
+</table>

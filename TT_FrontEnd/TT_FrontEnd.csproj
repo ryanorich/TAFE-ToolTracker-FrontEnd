@@ -138,6 +138,7 @@
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoanController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ToolController.cs" />
     <Compile Include="Controllers\WorkspaceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -152,7 +153,9 @@
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\LoanDetailsViewModel.cs" />
+    <Compile Include="ViewModels\LoanedToolsViewModel.cs" />
     <Compile Include="ViewModels\ToolEditViewModel.cs" />
+    <Compile Include="ViewModels\ToolInventoryViewModel.cs" />
     <Compile Include="ViewModels\TooListlViewModel.cs" />
     <Compile Include="WebClient.cs" />
   </ItemGroup>
@@ -213,6 +216,12 @@
     <Content Include="Views\Loan\Details.cshtml" />
     <Content Include="Views\Loan\Delete.cshtml" />
     <Content Include="Views\Loan\Create.cshtml" />
+    <Content Include="Views\Report\GetLoanedToolsReport.cshtml" />
+    <Content Include="Views\Report\GetToolInventoryReport.cshtml" />
+    <Content Include="Views\Loan\Edit.cshtml" />
+    <Content Include="Views\Loan\RemoveRentedTool.cshtml" />
+    <Content Include="Views\Loan\RemoveLoanedTool.cshtml" />
+    <Content Include="Views\Loan\AddLoanedTool.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

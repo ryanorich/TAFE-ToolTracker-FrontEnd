@@ -21,6 +21,6 @@ namespace TT_FrontEnd.Models
 
         public IEnumerable<SelectListItem> Borrowers { get; set; }
         public IEnumerable<SelectListItem> Workspaces { get; set; }
-        public IEnumerable<SelectListItem> AvailableTools { get; set; }
+        
     }
 }
