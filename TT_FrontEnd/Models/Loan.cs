@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,8 +12,10 @@ namespace TT_FrontEnd.Models
         public int LoanID { get; set; }
         public int BorrowerID { get; set; }
         public int WorkspaceID { get; set; }
-        public System.DateTime DateBorrowed { get; set; }
-        public System.DateTime? DateReturned { get; set; }
+        [DataType(DataType.Date)]
+		public DateTime DateBorrowed { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? DateReturned { get; set; }
 
         public virtual Borrower Borrower { get; set; }
         public virtual Workspace Workspace { get; set; }

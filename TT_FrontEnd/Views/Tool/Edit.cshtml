@@ -18,6 +18,11 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ToolID)
 
+		<div class="form-group">
+			<img id="imageSource" src="~/UploadedFiles/@Model.picFileName"
+				 style="height:200px; width:200px; " />
+		</div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.ToolName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

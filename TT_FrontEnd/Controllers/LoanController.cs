@@ -50,13 +50,12 @@ namespace TT_FrontEnd.Controllers
             {
                 HttpResponseMessage response = WebClient.ApiClient.PostAsJsonAsync("Loan", loan).Result;
 
-              //  loan = response.Content.ReadAsAsync<Loan>().Result;
-              //  response = WebClient.ApiClient.GetAsync($"RentalItemsById/{loan.LoanID}").Result;
-
+                loan = response.Content.ReadAsAsync<Loan>().Result;
+                            
             
                 //TODO - Redirect towards edit
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", new { id = loan.LoanID });
             }
             catch
             {

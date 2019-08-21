@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
@@ -59,19 +60,21 @@ namespace TT_FrontEnd.Controllers
         // GET: Tool/Create
         public ActionResult Create()
         {
-            var tool = new Tool();
+			var tool = new Tool
+			{
+				ToolID = 0,
+				Decomissioned = false,
+				Brands = GetBrands()
+			};
 
-            tool.ToolID = 0;
-            tool.Decomissioned = false;
-            tool.Brands = GetBrands();
-
-            return View(tool);
+			return View(tool);
         }
 
         // POST: Tool/Create
         [HttpPost]
         public ActionResult Create(Tool tool)
         {
+
             try
             {
 
@@ -174,5 +177,16 @@ namespace TT_FrontEnd.Controllers
             return new SelectList(brandList, "Value", "Text");
 
         }
+
+		[HttpPost]
+		public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files)
+		{
+			foreach (var file in files)
+			{
+				file.SaveAs(Path.Combine(Server.MapPath("~/UploadedFiles"), file.FileName));
+			}
+
+			return Json("Files Uploadee Sucessfully!");
+		}
     }
 }

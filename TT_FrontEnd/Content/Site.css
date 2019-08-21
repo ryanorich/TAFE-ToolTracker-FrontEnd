@@ -15,3 +15,22 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+/* The stype for Drag and Drop area*/
+#dropArea {
+	background: #bbb;
+	border: #888 dashed 2px;
+	height: 100%;
+	width: 480px;
+	text-align: center;
+	color: #fff;
+	padding-top: 12px;
+}
+
+.active-drop {
+	background: #8be !important;
+	border: solid 2px #ddd !important;
+	opacity: .5;
+	color: black !important;
+}
