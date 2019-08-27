@@ -236,12 +236,13 @@ namespace TT_FrontEnd.Controllers
             HttpResponseMessage response = WebClient.ApiClient.GetAsync("Tool").Result;
             IList<Tool> tools = response.Content.ReadAsAsync<IList<Tool>>().Result;
                  
-            //Select tools by weather they have been loaned, and if they have been returned.
+            //Count the numer of times a tool is part of a loan that has not been returned, and if 
+            // it is more then 0, an the tool is decomisssioned, then it is available for loaing.
             List<SelectListItem> toolList = tools
                             .Where(w => {
                                 var loans = w.LoanTools;
                                 int outloans = loans.Where(l => l.Loan.DateReturned == null).Count();
-                                return outloans > 0 ? false: true ;
+                            return (outloans > 0) || (w.Decomissioned != false) ? false: true ;
                             })
                             .OrderBy(o => o.ToolName)
                             .Select(t => new SelectListItem

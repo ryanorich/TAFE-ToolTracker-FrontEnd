@@ -1,34 +1,35 @@
 ﻿@model IEnumerable<TT_FrontEnd.Models.Borrower>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+	@Html.ActionLink("New", "Create", null, new { @class = "glyphicon glyphicon-plus" })
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BorrowerName)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.BorrowerName)
+		</th>
+		<th></th>
+	</tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BorrowerName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BorrowerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BorrowerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BorrowerID })
-        </td>
-    </tr>
-}
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.BorrowerName)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.BorrowerID }, new { @class = "glyphicon glyphicon-pencil" }) |
+				@Html.ActionLink("Details", "Details", new { id = item.BorrowerID }, new { @class = "glyphicon glyphicon-list-alt" }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.BorrowerID }, new { @class = "glyphicon glyphicon-trash" })
+			</td>
+		</tr>
+	}
 
 </table>

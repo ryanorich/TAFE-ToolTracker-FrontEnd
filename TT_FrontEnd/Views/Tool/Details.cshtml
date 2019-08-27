@@ -8,36 +8,51 @@
 <h2>Details</h2>
 
 <div>
-    <h4>TooListlViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ToolName)
-        </dt>
+	<h4>Tool</h4>
+	<hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.ToolName)
-        </dd>
+	@if (Model.picFileName != null && Model.picFileName != string.Empty)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BrandName)
-        </dt>
+	{
 
-        <dd>
-            @Html.DisplayFor(model => model.BrandName)
-        </dd>
+		<div class="form-group">
+			<img id="imageSource" src="~/UploadedFiles/@Model.picFileName"
+				 style="height:200px; width:200px; " />
+		</div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Decomissioned)
-        </dt>
+	}
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayFor(model => model.ToolName)
 
-        <dd>
-            @Html.DisplayFor(model => model.Decomissioned)
-        </dd>
+		</dt>
 
-    </dl>
+		<dd>
+			@Html.DisplayFor(model => model.ToolName)
+		</dd>
+
+		<dt>
+			@Html.DisplayFor(model => model.BrandName)
+
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.BrandName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Decomissioned)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Decomissioned)
+		</dd>
+
+
+
+	</dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ToolId }) |
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Edit", "Edit", new { id = Model.ToolId }, new { @class = "glyphicon glyphicon-pencil" }) |
+	@Html.ActionLink("Back", "Index", null, new { @class = "glyphicon glyphicon-arrow-left" })
 </p>

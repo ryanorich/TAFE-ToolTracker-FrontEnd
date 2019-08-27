@@ -22,6 +22,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkspaceID }) |
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Edit", "Edit", new { id = Model.WorkspaceID }, new { @class = "glyphicon glyphicon-pencil" }) |
+	@Html.ActionLink("Back", "Index", null, new { @class = "glyphicon glyphicon-arrow-left" })
 </p>

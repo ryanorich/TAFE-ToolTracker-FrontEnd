@@ -8,39 +8,49 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("New", "Create", null, new { @class = "glyphicon glyphicon-plus" })
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ToolName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BrandName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Decomissioned)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			Picture
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ToolName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.BrandName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Decomissioned)
+		</th>
+		<th></th>
+	</tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ToolName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BrandName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Decomissioned)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ToolId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ToolId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ToolId })
-        </td>
-    </tr>
+	<tr>
+		<td>
+			@if (item.picFileName != null && item.picFileName != string.Empty)
+			{
+			<img id="imageSource" src="~/UploadedFiles/@item.picFileName"
+				 style="height:40px; width:40px; " />
+			}
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.ToolName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.BrandName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Decomissioned)
+		</td>
+		<td>
+			@Html.ActionLink("Edit", "Edit", new { id = item.ToolId }, new { @class = "glyphicon glyphicon-pencil" }) |
+			@Html.ActionLink("Details", "Details", new { id = item.ToolId }, new { @class = "glyphicon glyphicon-list-alt" }) |
+			@Html.ActionLink("Delete", "Delete", new { id = item.ToolId }, new { @class = "glyphicon glyphicon-trash" })
+		</td>
+	</tr>
 }
 
 </table>

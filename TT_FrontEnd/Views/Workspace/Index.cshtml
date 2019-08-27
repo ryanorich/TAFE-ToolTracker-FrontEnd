@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("New", "Create", null, new { @class = "glyphicon glyphicon-plus" })
 </p>
 <table class="table">
     <tr>
@@ -24,9 +24,9 @@
             @Html.DisplayFor(modelItem => item.WorkspaceName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.WorkspaceID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.WorkspaceID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.WorkspaceID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.WorkspaceID }, new { @class = "glyphicon glyphicon-pencil" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WorkspaceID }, new { @class = "glyphicon glyphicon-list-alt" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WorkspaceID }, new { @class = "glyphicon glyphicon-trash" })
         </td>
     </tr>
 }

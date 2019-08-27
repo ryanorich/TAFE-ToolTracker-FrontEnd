@@ -59,6 +59,6 @@
 </div>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LoanID }) |
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Edit", "Edit", new { id = Model.LoanID }, new { @class = "glyphicon glyphicon-pencil" }) |
+	@Html.ActionLink("Back", "Index", null, new { @class = "glyphicon glyphicon-arrow-left" })
 </p>

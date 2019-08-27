@@ -29,7 +29,9 @@ namespace TT_FrontEnd.Controllers
                                   .Select(u => u.BrandName)
                                   .FirstOrDefault(),
                 // converting from bool? to bool (assuming null is false)
-                Decomissioned = t.Decomissioned == true ? true : false
+                Decomissioned = t.Decomissioned == true ? true : false,
+                picFileName=t.picFileName
+
 
             }
             ).ToList();
@@ -50,6 +52,7 @@ namespace TT_FrontEnd.Controllers
             {
                 ToolId = tool.ToolID,
                 ToolName = tool.ToolName,
+                picFileName = tool.picFileName,
                 BrandName = brands.Where(b => tool.BrandID == b.BrandID).Select(b => b.BrandName).FirstOrDefault(),
                 Decomissioned = (bool)tool.Decomissioned
             };

@@ -59,7 +59,7 @@
 		<!--Addig Movie List-->
 		<div class="form-group">
 			<p>
-				@Html.ActionLink("Add Tool", "AddLoanedTool", new { Model.LoanID }, null)
+				@Html.ActionLink("Add", "AddLoanedTool", new { Model.LoanID }, new { @class = "glyphicon glyphicon-plus" })
 			</p>
 			<h4>Tools Loaned</h4>
 			<table class="table table-bordered">
@@ -85,7 +85,7 @@
 							@item.Tool.ToolName
 						</td>
 						<td>
-							@Html.ActionLink("Remove", "RemoveLoanedTool", new { id = item.LoanToolID })
+							@Html.ActionLink("Remove", "RemoveLoanedTool", new { id = item.LoanToolID }, new { @class = "glyphicon glyphicon-trash" })
 						</td>
 
 					</tr>
@@ -104,9 +104,9 @@
 	</div>
 }
 
-<div>
-	@Html.ActionLink("Back to List", "Index")
-</div>
+	<div>
+		@Html.ActionLink("Back", "Index", null, new { @class = "glyphicon glyphicon-arrow-left" })
+	</div>
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")

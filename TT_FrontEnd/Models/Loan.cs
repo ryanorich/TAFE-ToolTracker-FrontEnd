@@ -9,12 +9,15 @@ namespace TT_FrontEnd.Models
 {
     public class Loan
     {
+        [Display(Name = "Loan ID")]
         public int LoanID { get; set; }
         public int BorrowerID { get; set; }
         public int WorkspaceID { get; set; }
         [DataType(DataType.Date)]
-		public DateTime DateBorrowed { get; set; }
+        [Display(Name = "Date Borrowed")]
+        public DateTime DateBorrowed { get; set; }
         [DataType(DataType.Date)]
+        [Display(Name = "Date Returned")]
         public DateTime? DateReturned { get; set; }
 
         public virtual Borrower Borrower { get; set; }

@@ -152,7 +152,6 @@
     <Compile Include="Models\TT_FrontEndContext.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\LoanDetailsViewModel.cs" />
     <Compile Include="ViewModels\LoanedToolsViewModel.cs" />
     <Compile Include="ViewModels\ToolEditViewModel.cs" />
     <Compile Include="ViewModels\ToolInventoryViewModel.cs" />
@@ -310,7 +309,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Test_Empty\Index.cshtml" />
     <Content Include="Views\Borrower\Index.cshtml" />
     <Content Include="Views\Brand\Index.cshtml" />
     <Content Include="Views\Workspace\Index.cshtml" />
@@ -338,14 +336,13 @@
     <Content Include="Views\Report\GetLoanedToolsReport.cshtml" />
     <Content Include="Views\Report\GetToolInventoryReport.cshtml" />
     <Content Include="Views\Loan\Edit.cshtml" />
-    <Content Include="Views\Loan\RemoveRentedTool.cshtml" />
+    <Content Include="Views\Loan\__RemoveRentedTool.cshtml" />
     <Content Include="Views\Loan\RemoveLoanedTool.cshtml" />
     <Content Include="Views\Loan\AddLoanedTool.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="UploadedFiles\" />
-    <Folder Include="Views\test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
