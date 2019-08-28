@@ -104,9 +104,9 @@
 	</div>
 }
 
-	<div>
-		@Html.ActionLink("Back", "Index", null, new { @class = "glyphicon glyphicon-arrow-left" })
-	</div>
+<div>
+	@Html.ActionLink("Back", "Index", null, new { @class = "glyphicon glyphicon-arrow-left" })
+</div>
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
@@ -114,7 +114,7 @@
 	<script type="text/javascript">
 		$(function () { // will trigger when the document is ready
 			$('.datepicker').datepicker({
-	
+
 				format: "dd/mm/yyyy",
 				weekStart: 1,
 				daysOfWeekHighlighted: "0,6",
@@ -126,4 +126,18 @@
 	</script>
 
 
-}
+		<script type="text/javascript">
+		$(function () {
+			var sm = '@TempData["SuccessMessageEdit"]';
+
+			if (sm != '')
+				alertify.success(sm);
+
+		});
+
+		</script>
+	}
+
+
+
+

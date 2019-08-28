@@ -51,11 +51,10 @@ namespace TT_FrontEnd.Controllers
                 HttpResponseMessage response = WebClient.ApiClient.PostAsJsonAsync("Loan", loan).Result;
 
                 loan = response.Content.ReadAsAsync<Loan>().Result;
-                            
-            
-                //TODO - Redirect towards edit
 
-                return RedirectToAction("Edit", new { id = loan.LoanID });
+
+				TempData["SuccessMessage"] = "Loan created sucseefully.";
+				return RedirectToAction("Edit", new { id = loan.LoanID });
             }
             catch
             {
@@ -84,9 +83,12 @@ namespace TT_FrontEnd.Controllers
                 // TODO: Add update logic here
 
                 HttpResponseMessage response = WebClient.ApiClient.PutAsJsonAsync($"Loan/{id}", loan).Result;
-                if (response.IsSuccessStatusCode)
-                    return RedirectToAction("Index");
-                return View(loan);
+				if (response.IsSuccessStatusCode)
+				{
+					TempData["SuccessMessage"] = "Loan updated sucseefully.";
+					return RedirectToAction("Index");
+				}
+					return View(loan);
             }
             catch
             {
@@ -111,7 +113,8 @@ namespace TT_FrontEnd.Controllers
             {
               
                 HttpResponseMessage response = WebClient.ApiClient.DeleteAsync($"Loan/{id}").Result;
-                return RedirectToAction("Index");
+				TempData["SuccessMessage"] = "Loan deleted sucseefully.";
+				return RedirectToAction("Index");
             }
             catch
             {
@@ -137,10 +140,9 @@ namespace TT_FrontEnd.Controllers
             try
             {
                 int id = loanTool.LoanID;
-                HttpResponseMessage response = WebClient.ApiClient
-                                    .PostAsJsonAsync("LoanTool", loanTool).Result;
-
-                return RedirectToAction("Edit", new { id });
+                HttpResponseMessage response = WebClient.ApiClient.PostAsJsonAsync("LoanTool", loanTool).Result;
+				TempData["SuccessMessageEdit"] = "Loan Tool added sucseefully.";
+				return RedirectToAction("Edit", new { id });
             }
             catch
             {
@@ -148,7 +150,6 @@ namespace TT_FrontEnd.Controllers
                 return View("No record found...");
             }
         }
-
 
         // Remove Loaned Tool - Get
         public ActionResult RemoveLoanedTool(int id)
@@ -159,29 +160,23 @@ namespace TT_FrontEnd.Controllers
             return View(loanTool);
         }
 
-
-
-
         // Remove Loaned Tool - Post
         [HttpPost]
         public ActionResult RemoveLoanedTool(int id, LoanTool loanTool)
         {
             try
             {
+	
                 HttpResponseMessage response = WebClient.ApiClient.DeleteAsync($"LoanTool/{id}").Result;
-
-                var loanToolDeleted = response.Content.ReadAsAsync<LoanTool>().Result;
-
-
-                return RedirectToAction("Edit", new { id = loanToolDeleted.LoanID });
-
+				TempData["SuccessMessageEdit"] = "Loan Tool removed sucseefully.";
+				var loanToolDeleted = response.Content.ReadAsAsync<LoanTool>().Result;
+				return RedirectToAction("Edit", new { id = loanToolDeleted.LoanID });
             }
-            catch
+            catch (Exception e)
             {
                 return View();
             }
         }
-
         #region Helper Methods
 
 

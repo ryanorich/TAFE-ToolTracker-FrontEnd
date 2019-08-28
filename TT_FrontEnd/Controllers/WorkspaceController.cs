@@ -41,8 +41,8 @@ namespace TT_FrontEnd.Controllers
             try
             {
                 HttpResponseMessage response = WebClient.ApiClient.PostAsJsonAsync("Workspace", workspace).Result;
-
-                return RedirectToAction("Index");
+				TempData["SuccessMessage"] = "Workspace created sucseefully.";
+				return RedirectToAction("Index");
             }
             catch
             {
@@ -65,9 +65,12 @@ namespace TT_FrontEnd.Controllers
             try
             {
                 HttpResponseMessage response = WebClient.ApiClient.PutAsJsonAsync($"Workspace/{id}", workspace).Result;
-                if (response.IsSuccessStatusCode)
-                    return RedirectToAction("Index");
-                return View(workspace);
+				if (response.IsSuccessStatusCode)
+				{
+					TempData["SuccessMessage"] = "Workspace updated sucseefully.";
+					return RedirectToAction("Index");
+				}
+					return View(workspace);
             }
             catch
             {
@@ -90,8 +93,8 @@ namespace TT_FrontEnd.Controllers
             try
             {
                 HttpResponseMessage response = WebClient.ApiClient.DeleteAsync($"Workspace/{id}").Result;
-
-                return RedirectToAction("Index");
+				TempData["SuccessMessage"] = "Workspace deleted sucseefully.";
+				return RedirectToAction("Index");
             }
             catch
             {

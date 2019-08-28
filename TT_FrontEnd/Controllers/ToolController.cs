@@ -84,9 +84,12 @@ namespace TT_FrontEnd.Controllers
                 HttpResponseMessage response = WebClient.ApiClient.PostAsJsonAsync("Tool", tool).Result;
 
 
-                if (response.IsSuccessStatusCode)
-                    return RedirectToAction("Index");
-                return View(tool);
+				if (response.IsSuccessStatusCode)
+				{
+					TempData["SuccessMessage"] = "Tool created sucseefully.";
+					return RedirectToAction("Index");
+				}
+					return View(tool);
             }
             catch
             {
@@ -113,9 +116,12 @@ namespace TT_FrontEnd.Controllers
             {
 
                 HttpResponseMessage response = WebClient.ApiClient.PutAsJsonAsync($"Tool/{id}", tool).Result;
-                if (response.IsSuccessStatusCode)
-                    return RedirectToAction("Index");
-                return View(tool);
+				if (response.IsSuccessStatusCode)
+				{
+					TempData["SuccessMessage"] = "Tool updated sucseefully.";
+					return RedirectToAction("Index");
+				}
+					return View(tool);
             }
             catch
             {
@@ -154,7 +160,8 @@ namespace TT_FrontEnd.Controllers
             try
             {
                 HttpResponseMessage response = WebClient.ApiClient.DeleteAsync($"Tool/{id}").Result;
-                return RedirectToAction("Index");
+				TempData["SuccessMessage"] = "Tool deleted sucseefully.";
+				return RedirectToAction("Index");
             }
             catch
             {

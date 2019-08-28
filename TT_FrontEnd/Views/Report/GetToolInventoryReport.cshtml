@@ -1,52 +1,72 @@
 ﻿@model IEnumerable<TT_FrontEnd.ViewModels.ToolInventoryViewModel>
 
 @{
-    ViewBag.Title = "GetToolInventoryReport";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "GetToolInventoryReport";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Tool Inventory Report</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BrandName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ToolName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Decomissioned)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Loaned)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Latest)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BrandName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ToolName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Decomissioned)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem =>  item.isLoaned )
-			
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Latest)
-        </td>
+@using (Html.BeginForm("GetToolInventoryReport", "Report", FormMethod.Get))
+{
+	@Html.Label("Search: ")
+	<input type="text" id="criteria" name="criteria" />
+	<input type="submit" value="Search" class="btn btn-sucess btn-med" />
 
-    </tr>
 }
 
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.BrandName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ToolName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Decomissioned)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Loaned)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Latest)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.BrandName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ToolName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Decomissioned)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.isLoaned)
+
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Latest)
+			</td>
+
+		</tr>
+	}
+
 </table>
+
+@using (Html.BeginForm("ExportToolInventory", "Report", FormMethod.Get))
+{
+	<button name="button" style="width:128px;height:48px;font-weight:bold" title="Export">
+		Save CSV
+	</button>
+
+}
+

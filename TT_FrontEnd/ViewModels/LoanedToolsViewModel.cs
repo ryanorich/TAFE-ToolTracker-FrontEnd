@@ -19,7 +19,7 @@ namespace TT_FrontEnd.ViewModels
         public int LoanID { get; set; }
         [Display(Name = "Workspace")]
         public string WorkspaceName { get; set; }
-        [Display(Name = "Date Returned")]
+        [Display(Name = "Borrower")]
         public string BorrowerName { get; set; }
         [Display(Name = "Date Borrowed")]
         public DateTime DateBorrowed { get; set; }

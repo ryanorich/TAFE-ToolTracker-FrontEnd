@@ -11,6 +11,7 @@ namespace TT_FrontEnd.Models
         public int LoanToolID { get; set; }
         public int LoanID { get; set; }
         public int ToolID { get; set; }
+
         public virtual Loan Loan { get; set; }
         public virtual Tool Tool { get; set; }
 

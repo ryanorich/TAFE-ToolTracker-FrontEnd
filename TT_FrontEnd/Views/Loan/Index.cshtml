@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<TT_FrontEnd.Models.Loan>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	/**/
+
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("New", "Create", null, new { @class = "glyphicon glyphicon-plus" })
+	@Html.ActionLink("New", "Create", null, new { @class = "glyphicon glyphicon-plus" })
 </p>
 <table class="table">
 	<tr>
@@ -27,26 +29,45 @@
 		<th></th>
 	</tr>
 
-@foreach (var item in Model) {
-	<tr>
-		<td>
-			@Html.DisplayFor(modelItem => item.DateBorrowed)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.DateReturned)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Borrower.BorrowerName)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Workspace.WorkspaceName)
-		</td>
-		<td>
-			@Html.ActionLink("Edit", "Edit", new { id = item.LoanID }, new { @class = "glyphicon glyphicon-pencil" }) |
-			@Html.ActionLink("Details", "Details", new { id = item.LoanID }, new { @class = "glyphicon glyphicon-list-alt" }) |
-			@Html.ActionLink("Delete", "Delete", new { id = item.LoanID }, new { @class = "glyphicon glyphicon-trash" })
-		</td>
-	</tr>
-}
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.DateBorrowed)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DateReturned)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Borrower.BorrowerName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Workspace.WorkspaceName)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.LoanID }, new { @class = "glyphicon glyphicon-pencil" }) |
+				@Html.ActionLink("Details", "Details", new { id = item.LoanID }, new { @class = "glyphicon glyphicon-list-alt" }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.LoanID }, new { @class = "glyphicon glyphicon-trash" })
+			</td>
+		</tr>
+	}
 
 </table>
+
+@section Scripts
+	{
+
+	@Scripts.Render("~/bundles/jqueryval")
+
+	<script type="text/javascript">
+		$(function ()
+		{
+			var sm = '@TempData["SuccessMessage"]';
+
+			if (sm != '')
+				alertify.success(sm);
+
+		});
+
+	</script>
+}

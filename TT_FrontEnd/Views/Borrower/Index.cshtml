@@ -33,3 +33,19 @@
 	}
 
 </table>
+
+@section Scripts {
+
+	@Scripts.Render("~/bundles/jqueryval")
+
+	<script type="text/javascript">
+		$(function () {
+			var sm = '@TempData["SuccessMessage"]';
+
+			if (sm != '')
+				alertify.success(sm);
+
+		});
+
+	</script>
+}

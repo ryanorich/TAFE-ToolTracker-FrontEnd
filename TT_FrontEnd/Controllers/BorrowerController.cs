@@ -40,7 +40,9 @@ namespace TT_FrontEnd.Controllers
             {
                 HttpResponseMessage response = WebClient.ApiClient.PostAsJsonAsync("Borrower", borrower).Result;
 
-                return RedirectToAction("Index");
+				TempData["SuccessMessage"] = "Borrower created sucseefully.";
+
+				return RedirectToAction("Index");
             }
             catch
             {
@@ -64,8 +66,11 @@ namespace TT_FrontEnd.Controllers
             {
                 HttpResponseMessage response = WebClient.ApiClient.PutAsJsonAsync($"Borrower/{id}", borrower).Result;
 
-                if (response.IsSuccessStatusCode)
-                    return RedirectToAction("Index");
+				if (response.IsSuccessStatusCode)
+				{
+					TempData["SuccessMessage"] = "Borrower updated sucseefully.";
+					return RedirectToAction("Index");
+				}
                 return View(borrower);
             }
             catch
@@ -79,7 +84,8 @@ namespace TT_FrontEnd.Controllers
         {
             HttpResponseMessage response = WebClient.ApiClient.GetAsync($"Borrower/{id}").Result;
             var borrower = response.Content.ReadAsAsync<Borrower>().Result;
-            return View(borrower);
+			
+			return View(borrower);
         }
 
         // POST: Borrower/Delete/5
@@ -89,8 +95,8 @@ namespace TT_FrontEnd.Controllers
             try
             {
                 HttpResponseMessage response = WebClient.ApiClient.DeleteAsync($"Borrower/{id}").Result;
-
-                return RedirectToAction("Index");
+				TempData["SuccessMessage"] = "Borrower deleted sucseefully.";
+				return RedirectToAction("Index");
             }
             catch
             {
