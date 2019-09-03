@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TT_FrontEnd.ViewModels.ToolBorrowCountViewModel>
+
+@{
+    ViewBag.Title = "GetToolBorrowCountReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetToolBorrowCountReport</h2>
+
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.ToolName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.BorrowCount)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.picFileName)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.ToolName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.BorrowCount)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.picFileName)
+			</td>
+
+		</tr>
+	}
+</table>
+	<div>
+		<h2>Chart</h2>
+		<img src="@Url.Action("DrawToolBorrowCountChart")" />
+	</div>
+
+
+
+

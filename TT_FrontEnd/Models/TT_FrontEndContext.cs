@@ -36,5 +36,7 @@ namespace TT_FrontEnd.Models
         public System.Data.Entity.DbSet<TT_FrontEnd.ViewModels.ToolInventoryViewModel> ToolInventoryViewModels { get; set; }
 
         public System.Data.Entity.DbSet<TT_FrontEnd.Models.LoanTool> LoanTools { get; set; }
+
+        public System.Data.Entity.DbSet<TT_FrontEnd.ViewModels.ToolBorrowCountViewModel> ToolBorrowCountViewModels { get; set; }
     }
 }

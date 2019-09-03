@@ -11,6 +11,8 @@ namespace TT_FrontEnd.Controllers
 {
     public class ReportController : Controller
     {
+
+
         // GET: Report
         [HttpGet]
         public ActionResult GetLoanedToolsReport(string criteria)
@@ -80,6 +82,30 @@ namespace TT_FrontEnd.Controllers
 			Response.End();
 
 		}
+
+        // Retrieve report data form API
+        public IEnumerable<ToolBorrowCountViewModel> GetToolBorrowCountData()
+        {
+            HttpResponseMessage response = WebClient.ApiClient.GetAsync("Report/GetToolBorrowCount").Result;
+            IEnumerable<ToolBorrowCountViewModel> toolBorrowCountReport =
+                response.Content.ReadAsAsync<IEnumerable<ToolBorrowCountViewModel>>().Result;
+
+            return toolBorrowCountReport;
+        }
+
+        // Draw the Chart
+        public ActionResult DrawToolBorrowCountChart()
+        {
+            IEnumerable<ToolBorrowCountViewModel> toolBorrowCountData = GetToolBorrowCountData();
+
+            return View(toolBorrowCountData);
+        }
+
+        public ActionResult GetToolBorrowCountReport()
+        {
+            IEnumerable<ToolBorrowCountViewModel> toolBorrowCountData = GetToolBorrowCountData();
+            return View(toolBorrowCountData);
+        }
 
 	}
 }

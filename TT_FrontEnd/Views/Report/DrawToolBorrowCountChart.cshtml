@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TT_FrontEnd.ViewModels.ToolBorrowCountViewModel>
+
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Tool Borrow Count Chart</title>
+</head>
+<body>
+
+		@{
+
+			var chartTheme =
+@"
+
+<Chart Palette=""SemiTransparent"">
+<ChartAreas>
+	<ChartArea Name=""Default""  BackGradientStyle=""LeftRight""  BackColor=""maroon"" BorderDashStyle=""Solid"" >
+
+		<AxisX Title=""Tools"" IsLabelAutoFit=""False"">
+			<LabelStyle Angle=""0"" Interval=""1"" ForeColor=""maroon"" Font=""Trebuchet MS, 10pt, style=Bold"" />
+		</AxisX>
+		
+		<AxisY Title=""Times Borrowed"" IsLabelAutoFit=""False"">
+			<LabelStyle Angle=""0"" Interval=""1"" ForeColor=""maroon"" Font=""Trebuchet MS, 10pt, style=Bold"" />
+		</AxisY>
+
+	</ChartArea>
+</ChartAreas>
+</Chart>
+
+";
+
+			var chart = new Chart(width: 600, height: 600 , theme: chartTheme)
+					.AddTitle("Tool Borrow Count Report")
+
+				.AddSeries(
+				name: "Count",
+				chartType: "Bar",
+
+
+				xValue: Model,
+				xField: "ToolName",
+				yValues: Model,
+				yFields: "BorrowCount")
+
+				.Write();
+
+		}
+
+</body>
+</html>
