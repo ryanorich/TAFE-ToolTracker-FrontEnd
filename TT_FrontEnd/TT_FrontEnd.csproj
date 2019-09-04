@@ -342,9 +342,11 @@
     <Content Include="Views\Loan\AddLoanedTool.cshtml" />
     <Content Include="Views\Report\DrawToolBorrowCountChart.cshtml" />
     <Content Include="Views\Report\GetToolBorrowCountReport.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\" />
     <Folder Include="UploadedFiles\" />
   </ItemGroup>
   <ItemGroup>

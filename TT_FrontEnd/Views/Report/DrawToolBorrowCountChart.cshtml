@@ -19,16 +19,21 @@
 			var chartTheme =
 @"
 
-<Chart Palette=""SemiTransparent"">
+<Chart Palette=""SemiTransparent"" AntiAliasing=""All"">
+<Titles>
+<Title Font=""Trebuchet MS, 20pt, style=Bold"" Text=""Tool Borrow Count Report"">
+</Title>
+</Titles>
 <ChartAreas>
-	<ChartArea Name=""Default""  BackGradientStyle=""LeftRight""  BackColor=""maroon"" BorderDashStyle=""Solid"" >
+	<ChartArea Name=""Default"" _Template_=""All"" BackGradientStyle=""LeftRight""  BackColor=""maroon"" BorderDashStyle=""Solid"" >
 
-		<AxisX Title=""Tools"" IsLabelAutoFit=""False"">
+		<AxisX Title=""Tools"" IsLabelAutoFit=""False"" TitleFont=""Trebuchet MS, 16pt, style=Bold"">
+			<MajorGrid Interval=""1"" />
 			<LabelStyle Angle=""0"" Interval=""1"" ForeColor=""maroon"" Font=""Trebuchet MS, 10pt, style=Bold"" />
 		</AxisX>
 		
-		<AxisY Title=""Times Borrowed"" IsLabelAutoFit=""False"">
-			<LabelStyle Angle=""0"" Interval=""1"" ForeColor=""maroon"" Font=""Trebuchet MS, 10pt, style=Bold"" />
+		<AxisY Title=""Times Borrowed"" IsLabelAutoFit=""False"" TitleFont=""Trebuchet MS, 16pt, style=Bold"">
+			<LabelStyle Angle=""0"" Interval=""1"" ForeColor=""maroon"" Font=""Trebuchet MS,10, style=Bold"" />
 		</AxisY>
 
 	</ChartArea>
@@ -37,8 +42,10 @@
 
 ";
 
-			var chart = new Chart(width: 600, height: 600 , theme: chartTheme)
-					.AddTitle("Tool Borrow Count Report")
+			
+
+			var chart = new Chart(width: 600, height: 600, theme: chartTheme)
+				//	.AddTitle("Tool Borrow Count Report")
 
 				.AddSeries(
 				name: "Count",
@@ -48,9 +55,12 @@
 				xValue: Model,
 				xField: "ToolName",
 				yValues: Model,
-				yFields: "BorrowCount")
+				yFields: "BorrowCount");
 
-				.Write();
+			
+			
+			
+			chart.Write("png");
 
 		}
 

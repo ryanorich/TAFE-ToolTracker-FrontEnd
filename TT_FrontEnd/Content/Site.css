@@ -34,3 +34,8 @@ textarea {
 	opacity: .5;
 	color: black !important;
 }
+
+.BoxShadow {
+	box-shadow: 3px 3px 5px 4px rgba(0, 0, 0, 0.2);
+	margin-bottom: 10px;
+}

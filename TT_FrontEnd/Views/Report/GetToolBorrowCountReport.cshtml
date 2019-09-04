@@ -5,37 +5,44 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>GetToolBorrowCountReport</h2>
+<h2>Tool Borrow Count</h2>
 
 
 <table class="table">
 	<tr>
+		<th>
+			Picture
+		</th>
 		<th>
 			@Html.DisplayNameFor(model => model.ToolName)
 		</th>
 		<th>
 			@Html.DisplayNameFor(model => model.BorrowCount)
 		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.picFileName)
-		</th>
+
 		<th></th>
 	</tr>
 
 	@foreach (var item in Model)
 	{
-		<tr>
-			<td>
-				@Html.DisplayFor(modelItem => item.ToolName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.BorrowCount)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.picFileName)
-			</td>
+	<tr>
 
-		</tr>
+		<td>
+			@if (item.picFileName != null && item.picFileName != string.Empty)
+			{
+				<img id="imageSource" src="~/UploadedFiles/@item.picFileName"
+					 style="height:40px; width:40px; " />
+			}
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.ToolName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.BorrowCount)
+		</td>
+
+
+	</tr>
 	}
 </table>
 	<div>

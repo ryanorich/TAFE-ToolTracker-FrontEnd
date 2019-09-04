@@ -1,24 +1,36 @@
 ﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Tool Tracker</h1>
+
 </div>
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
+	<div class="col-md-4">
+		<h2>Help</h2>
+		<p>
+			Click below to view Help for this application.
+		</p>
+		<p>  
+			  @Html.ActionLink("Help »", "Help", "Home", new { area = "" }, new {@class= "btn btn-default" }) </p>
+	</div>
+	<div class="col-md-4">
+		<h2>About</h2>
+		<p>
+			Tool Tracker is an application developed to manage the borrowing of tools for the 
+			St. Jude Community Workshoop.
+		</p>
+
+	</div>
+	<div class="col-md-4">
+		<h2>Acknowledgements</h2>
+		<p>
+			The Following Thrid Parties Applications are used:
+		</p>
+		<h4> Alertify JS</h4>
+		<p>Author: Mohammad Younes</p>
+		<p><a class="btn btn-default" href="https://alertifyjs.com/">AlertifyJS &raquo;</a></p>
+		<h4> jQueryFileDrop</h4>
+		<p>Author: Piotr Sobczak</p>
+
+		<p><a class="btn btn-default" href="https://github.com/weixiyen/jquery-filedrop">Filedrop &raquo;</a></p>
+	</div>
+
 </div>

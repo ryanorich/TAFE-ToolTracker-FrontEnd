@@ -97,14 +97,15 @@ namespace TT_FrontEnd.Controllers
         public ActionResult DrawToolBorrowCountChart()
         {
             IEnumerable<ToolBorrowCountViewModel> toolBorrowCountData = GetToolBorrowCountData();
+			
 
-            return View(toolBorrowCountData);
+			return View(toolBorrowCountData);
         }
 
         public ActionResult GetToolBorrowCountReport()
         {
             IEnumerable<ToolBorrowCountViewModel> toolBorrowCountData = GetToolBorrowCountData();
-            return View(toolBorrowCountData);
+            return View(toolBorrowCountData.Reverse());
         }
 
 	}
