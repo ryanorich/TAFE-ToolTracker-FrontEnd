@@ -49,6 +49,9 @@ namespace TT_FrontEnd.Controllers
 		{
 			List<LoanedToolsViewModel> loanedTools = TempData["LoanedTools"] as List<LoanedToolsViewModel>;
 
+            // re-creating TempData to allow for exporting again.
+            TempData["LoanedTools"] = loanedTools;
+
 			StringWriter sw = new StringWriter();
 
 			sw.WriteLine("\"Brand\",\"Tool\",\"Loan ID\",\"Workspace\",\"Borrower\",\"Date Borrowed\"");
@@ -67,6 +70,9 @@ namespace TT_FrontEnd.Controllers
 		public void ExportToolInventory()
 		{
 			List<ToolInventoryViewModel> toolInventory = TempData["ToolInventory"] as List<ToolInventoryViewModel>;
+
+            // re-creating tool data in Temp Data to allow for re-exporting report
+            TempData["ToolInventory"] = toolInventory;
 
 			StringWriter sw = new StringWriter();
 

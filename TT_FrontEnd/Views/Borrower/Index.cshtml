@@ -45,6 +45,10 @@
 			if (sm != '')
 				alertify.success(sm);
 
+			var fm = '@TempData["FailureMessage"]';
+			if (fm != '')
+				alertify.error(fm);
+
 		});
 
 	</script>

@@ -92,9 +92,19 @@ namespace TT_FrontEnd.Controllers
         [HttpPost]
         public ActionResult Delete(int id, Borrower borrower)
         {
+            HttpResponseMessage response = WebClient.ApiClient.GetAsync($"Borrower").Result;
+            IEnumerable<Borrower> borrowers = response.Content.ReadAsAsync<IEnumerable<Borrower>>().Result;
+
+            if (borrowers.Count(l => l.BorrowerID == id) > 0)
+            {// Workspace is used in a loan - cannot delete
+                TempData["FailureMessage"] = "Cannot delete Borrower that has been used in a loan.";
+                return RedirectToAction("Index");
+            }
+
+
             try
             {
-                HttpResponseMessage response = WebClient.ApiClient.DeleteAsync($"Borrower/{id}").Result;
+                 response = WebClient.ApiClient.DeleteAsync($"Borrower/{id}").Result;
 				TempData["SuccessMessage"] = "Borrower deleted sucseefully.";
 				return RedirectToAction("Index");
             }
