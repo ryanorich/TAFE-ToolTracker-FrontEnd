@@ -8,6 +8,9 @@ using TT_FrontEnd.Models;
 
 namespace TT_FrontEnd.Controllers
 {
+	/// <summary>
+	/// Controlelr for Workspac3es
+	/// </summary>
     public class WorkspaceController : Controller
     {
 

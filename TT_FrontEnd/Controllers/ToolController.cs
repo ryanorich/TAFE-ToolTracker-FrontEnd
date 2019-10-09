@@ -10,6 +10,9 @@ using TT_FrontEnd.ViewModels;
 
 namespace TT_FrontEnd.Controllers
 {
+	/// <summary>
+	/// Controller for Tools
+	/// </summary>
     public class ToolController : Controller
     {
         // GET: Tool
@@ -143,14 +146,11 @@ namespace TT_FrontEnd.Controllers
                 ToolId = tool.ToolID,
                 ToolName = tool.ToolName,
                 BrandName = brands.Where(b => tool.BrandID == b.BrandID).Select(b => b.BrandName).FirstOrDefault(),
-                Decomissioned = (bool)tool.Decomissioned
+                Decomissioned = (bool)tool.Decomissioned,
+				loanCount = tool.LoanTools.Count
             };
 
             return View(toolListViewModel);
-
-
-
-
         }
 
         // POST: Tool/Delete/5
@@ -169,7 +169,10 @@ namespace TT_FrontEnd.Controllers
             }
         }
 
-        public IEnumerable<SelectListItem> GetBrands()
+		#region Helper Methods
+
+		// Retrieves list for brand drop-down
+		public IEnumerable<SelectListItem> GetBrands()
         {
             HttpResponseMessage response = WebClient.ApiClient.GetAsync("Brand").Result;
             IList<Brand> brands = response.Content.ReadAsAsync<IList<Brand>>().Result;
@@ -180,14 +183,13 @@ namespace TT_FrontEnd.Controllers
                                                 {
                                                     Value = b.BrandID.ToString(),
                                                     Text = b.BrandName
-
                                                 }
                                                 ).ToList();
 
             return new SelectList(brandList, "Value", "Text");
-
         }
 
+		// Stores a file on the server
 		[HttpPost]
 		public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files)
 		{
@@ -198,5 +200,7 @@ namespace TT_FrontEnd.Controllers
 
 			return Json("Files Uploadee Sucessfully!");
 		}
-    }
+
+		#endregion
+	}
 }

@@ -8,6 +8,9 @@ using TT_FrontEnd.Models;
 
 namespace TT_FrontEnd.Controllers
 {
+	/// <summary>
+	/// Controller for Loans
+	/// </summary>
     public class LoanController : Controller
     {
         // GET: Loan
@@ -177,9 +180,10 @@ namespace TT_FrontEnd.Controllers
                 return View();
             }
         }
-        #region Helper Methods
+        
+		#region Helper Methods
 
-
+		// Gets a list for a Borrowers drop-down selection
         public IEnumerable<SelectListItem> GetBorrowers()
         {
 
@@ -195,6 +199,7 @@ namespace TT_FrontEnd.Controllers
             return new SelectList(borrowerList, "Value", "Text");
         }
 
+		// Gets a list for a Workspaces drop-down selection
         public IEnumerable<SelectListItem> GetWorkspaces()
         {
 
@@ -210,6 +215,7 @@ namespace TT_FrontEnd.Controllers
             return new SelectList(workspaceList, "Value", "Text");
         }
 
+		// Gets a list for a Tools drop-down selection
         public IEnumerable<SelectListItem> GetTools()
         {
 
@@ -225,6 +231,7 @@ namespace TT_FrontEnd.Controllers
             return new SelectList(toolList, "Value", "Text");
         }
 
+		// Gets a list for a Tools drop-down, where the tool is not borrowed, and is not decomissioned
         public IEnumerable<SelectListItem> GetAvailableTools()
         {
 
@@ -246,8 +253,6 @@ namespace TT_FrontEnd.Controllers
 
             return new SelectList(toolList, "Value", "Text");
         }
-
-
 
         #endregion
 

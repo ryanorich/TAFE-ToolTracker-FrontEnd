@@ -8,6 +8,9 @@ using TT_FrontEnd.Models;
 
 namespace TT_FrontEnd.Controllers
 {
+	/// <summary>
+	/// Controller for Borrowers
+	/// </summary>
     public class BorrowerController : Controller
     {
         // GET: Borrower
@@ -92,15 +95,14 @@ namespace TT_FrontEnd.Controllers
         [HttpPost]
         public ActionResult Delete(int id, Borrower borrower)
         {
-            HttpResponseMessage response = WebClient.ApiClient.GetAsync($"Borrower").Result;
-            IEnumerable<Borrower> borrowers = response.Content.ReadAsAsync<IEnumerable<Borrower>>().Result;
+			HttpResponseMessage response = WebClient.ApiClient.GetAsync($"Loan").Result;
+			IEnumerable<Loan> loans = response.Content.ReadAsAsync<IEnumerable<Loan>>().Result;
 
-            if (borrowers.Count(l => l.BorrowerID == id) > 0)
+			if (loans.Count(l => l.BorrowerID == id) > 0)
             {// Workspace is used in a loan - cannot delete
                 TempData["FailureMessage"] = "Cannot delete Borrower that has been used in a loan.";
                 return RedirectToAction("Index");
             }
-
 
             try
             {

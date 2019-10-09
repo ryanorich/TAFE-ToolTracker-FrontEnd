@@ -7,6 +7,24 @@
 
 <h2>Delete</h2>
 
+<h3 id="toolDeleteWarning">
+	@{if (Model.loanCount > 0)
+		{
+			@Html.Raw("<i class=\"glyphicon glyphicon-warning-sign\" style=\"color:#AA0000;\"></i>");
+			@Html.Raw("This Tool is recorded in ");
+			@Html.DisplayFor(model => model.loanCount);
+			@Html.Raw(" loan");
+			if (Model.loanCount > 1)
+			{ @Html.Raw("s");
+			}	
+			
+
+			@Html.Raw("</h3><p>Deleting this tool will permanently alter these records </p> <h3>");
+		}
+	}
+
+</h3>
+
 <h3>Are you sure you want to delete this?</h3>
 <div>
 	<h4>Tool</h4>
@@ -48,3 +66,5 @@
 	</div>
 	}
 </div>
+
+

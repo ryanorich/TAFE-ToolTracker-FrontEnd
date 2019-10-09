@@ -6,6 +6,9 @@ using System.Web.Mvc;
 
 namespace TT_FrontEnd.Controllers
 {
+	/// <summary>
+	/// Controller for default Home Page
+	/// </summary>
 	public class HomeController : Controller
 	{
 		public ActionResult Index()

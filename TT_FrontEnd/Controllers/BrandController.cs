@@ -8,6 +8,9 @@ using TT_FrontEnd.Models;
 
 namespace TT_FrontEnd.Controllers
 {
+	/// <summary>
+	/// controller for Brands
+	/// </summary>
 	public class BrandController : Controller
 	{
 		// GET: Brand
@@ -91,9 +94,18 @@ namespace TT_FrontEnd.Controllers
 		[HttpPost]
 		public ActionResult Delete(int id, Brand brand)
 		{
+			HttpResponseMessage response = WebClient.ApiClient.GetAsync($"Tool").Result;
+			IEnumerable<Tool> tools = response.Content.ReadAsAsync<IEnumerable<Tool>>().Result;
+
+			if (tools.Count(t => t.BrandID == id) > 0)
+			{
+				TempData["FailureMessage"] = "Cannot delete Brand that has been used for a tool.";
+				return RedirectToAction("Index");
+			}
+
 			try
 			{
-				HttpResponseMessage response = WebClient.ApiClient.DeleteAsync($"Brand/{id}").Result;
+				 response = WebClient.ApiClient.DeleteAsync($"Brand/{id}").Result;
 				TempData["SuccessMessage"] = "Brand deleted sucseefully.";
 				return RedirectToAction("Index");
 			}

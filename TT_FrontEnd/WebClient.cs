@@ -18,8 +18,6 @@ namespace TT_FrontEnd
         {
             // End Point - URL of the back end
             ApiClient.BaseAddress = new Uri(System.Configuration.ConfigurationManager.AppSettings["WebApiUrl"]);
-
         }
-    
     }
 }

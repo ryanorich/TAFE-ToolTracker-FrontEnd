@@ -19,5 +19,7 @@ namespace TT_FrontEnd.ViewModels
         public bool Decomissioned { get; set; }
         [Display(Name = "Picture File Name")]
         public string picFileName { get; set; }
+		[Display(Name = "Times Borrowed")]
+		public int loanCount { get; set; }
     }
 }
